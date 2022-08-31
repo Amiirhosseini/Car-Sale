@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{86F032E2-6590-4B39-B994-180F750EEC6A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DB_Lab_phase3</RootNamespace>
+    <AssemblyName>DB_Lab_phase3</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CarsDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Car_Type.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Color.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CountrySalesDetail_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomersDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dblab_phase2_aftercreateDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dblab_phase2_aftercreateDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dblab_phase2_aftercreateDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dblab_phase2_aftercreateDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dblab_phase2_aftercreateDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dblab_phase2_aftercreateDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dblab_phase2_aftercreateDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dblab_phase2_aftercreateDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1_Made_Cars_Function.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1_Made_Cars_Function.Designer.cs">
+      <DependentUpon>Form1_Made_Cars_Function.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_AddNewPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_AddNewPerson.Designer.cs">
+      <DependentUpon>Form_AddNewPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_city.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_city.Designer.cs">
+      <DependentUpon>Form_city.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_city_query.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_city_query.Designer.cs">
+      <DependentUpon>Form_city_query.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_intro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_intro.Designer.cs">
+      <DependentUpon>Form_intro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_person.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_person.Designer.cs">
+      <DependentUpon>Form_person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_person_query.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_person_query.Designer.cs">
+      <DependentUpon>Form_person_query.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_SalesDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SalesDetail.Designer.cs">
+      <DependentUpon>Form_SalesDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_start.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_start.Designer.cs">
+      <DependentUpon>Form_start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_vehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_vehicle.Designer.cs">
+      <DependentUpon>Form_vehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_vehicle_query.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_vehicle_query.Designer.cs">
+      <DependentUpon>Form_vehicle_query.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manufacturer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MilageFilter_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Person_Type.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="State.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SuppliersDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction_Type.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicle.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1_Made_Cars_Function.resx">
+      <DependentUpon>Form1_Made_Cars_Function.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_AddNewPerson.resx">
+      <DependentUpon>Form_AddNewPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_city.resx">
+      <DependentUpon>Form_city.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_city_query.resx">
+      <DependentUpon>Form_city_query.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_intro.resx">
+      <DependentUpon>Form_intro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_person.resx">
+      <DependentUpon>Form_person.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_person_query.resx">
+      <DependentUpon>Form_person_query.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SalesDetail.resx">
+      <DependentUpon>Form_SalesDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_start.resx">
+      <DependentUpon>Form_start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_vehicle.resx">
+      <DependentUpon>Form_vehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_vehicle_query.resx">
+      <DependentUpon>Form_vehicle_query.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="dblab_phase2_aftercreateDataSet.xsc">
+      <DependentUpon>dblab_phase2_aftercreateDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dblab_phase2_aftercreateDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet.xss">
+      <DependentUpon>dblab_phase2_aftercreateDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet1.xsc">
+      <DependentUpon>dblab_phase2_aftercreateDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dblab_phase2_aftercreateDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet1.xss">
+      <DependentUpon>dblab_phase2_aftercreateDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet2.xsc">
+      <DependentUpon>dblab_phase2_aftercreateDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dblab_phase2_aftercreateDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet2.xss">
+      <DependentUpon>dblab_phase2_aftercreateDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet3.xsc">
+      <DependentUpon>dblab_phase2_aftercreateDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dblab_phase2_aftercreateDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dblab_phase2_aftercreateDataSet3.xss">
+      <DependentUpon>dblab_phase2_aftercreateDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

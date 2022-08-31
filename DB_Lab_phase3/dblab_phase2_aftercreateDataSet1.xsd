@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dblab_phase2_aftercreateDataSet1" targetNamespace="http://tempuri.org/dblab_phase2_aftercreateDataSet1.xsd" xmlns:mstns="http://tempuri.org/dblab_phase2_aftercreateDataSet1.xsd" xmlns="http://tempuri.org/dblab_phase2_aftercreateDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="dblab_phase2_aftercreateConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dblab_phase2_aftercreateConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DB_Lab_phase3.Properties.Settings.GlobalReference.Default.dblab_phase2_aftercreateConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CarsDetailTableAdapter" GeneratorDataComponentClassName="CarsDetailTableAdapter" Name="CarsDetail" UserDataComponentName="CarsDetailTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dblab_phase2_aftercreateConnectionString (Settings)" DbObjectName="dblab_phase2_aftercreate.dbo.CarsDetail" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Manufacturer, Model, ChassisType, CountryOfProduction, YearOfProduction, Milage, FuelType, ColorName FROM dbo.CarsDetail</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Manufacturer" DataSetColumn="Manufacturer" />
+              <Mapping SourceColumn="Model" DataSetColumn="Model" />
+              <Mapping SourceColumn="ChassisType" DataSetColumn="ChassisType" />
+              <Mapping SourceColumn="CountryOfProduction" DataSetColumn="CountryOfProduction" />
+              <Mapping SourceColumn="YearOfProduction" DataSetColumn="YearOfProduction" />
+              <Mapping SourceColumn="Milage" DataSetColumn="Milage" />
+              <Mapping SourceColumn="FuelType" DataSetColumn="FuelType" />
+              <Mapping SourceColumn="ColorName" DataSetColumn="ColorName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dblab_phase2_aftercreateDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dblab_phase2_aftercreateDataSet1" msprop:Generator_UserDSName="dblab_phase2_aftercreateDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CarsDetail" msprop:Generator_TableClassName="CarsDetailDataTable" msprop:Generator_TableVarName="tableCarsDetail" msprop:Generator_TablePropName="CarsDetail" msprop:Generator_RowDeletingName="CarsDetailRowDeleting" msprop:Generator_RowChangingName="CarsDetailRowChanging" msprop:Generator_RowEvHandlerName="CarsDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="CarsDetailRowDeleted" msprop:Generator_UserTableName="CarsDetail" msprop:Generator_RowChangedName="CarsDetailRowChanged" msprop:Generator_RowEvArgName="CarsDetailRowChangeEvent" msprop:Generator_RowClassName="CarsDetailRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Manufacturer" msprop:Generator_ColumnVarNameInTable="columnManufacturer" msprop:Generator_ColumnPropNameInRow="Manufacturer" msprop:Generator_ColumnPropNameInTable="ManufacturerColumn" msprop:Generator_UserColumnName="Manufacturer">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Model" msprop:Generator_ColumnVarNameInTable="columnModel" msprop:Generator_ColumnPropNameInRow="Model" msprop:Generator_ColumnPropNameInTable="ModelColumn" msprop:Generator_UserColumnName="Model">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChassisType" msprop:Generator_ColumnVarNameInTable="columnChassisType" msprop:Generator_ColumnPropNameInRow="ChassisType" msprop:Generator_ColumnPropNameInTable="ChassisTypeColumn" msprop:Generator_UserColumnName="ChassisType">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CountryOfProduction" msprop:Generator_ColumnVarNameInTable="columnCountryOfProduction" msprop:Generator_ColumnPropNameInRow="CountryOfProduction" msprop:Generator_ColumnPropNameInTable="CountryOfProductionColumn" msprop:Generator_UserColumnName="CountryOfProduction">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="YearOfProduction" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnYearOfProduction" msprop:Generator_ColumnPropNameInRow="YearOfProduction" msprop:Generator_ColumnPropNameInTable="YearOfProductionColumn" msprop:Generator_UserColumnName="YearOfProduction" type="xs:int" minOccurs="0" />
+              <xs:element name="Milage" msprop:Generator_ColumnVarNameInTable="columnMilage" msprop:Generator_ColumnPropNameInRow="Milage" msprop:Generator_ColumnPropNameInTable="MilageColumn" msprop:Generator_UserColumnName="Milage" type="xs:int" minOccurs="0" />
+              <xs:element name="FuelType" msprop:Generator_ColumnVarNameInTable="columnFuelType" msprop:Generator_ColumnPropNameInRow="FuelType" msprop:Generator_ColumnPropNameInTable="FuelTypeColumn" msprop:Generator_UserColumnName="FuelType">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ColorName" msprop:Generator_ColumnVarNameInTable="columnColorName" msprop:Generator_ColumnPropNameInRow="ColorName" msprop:Generator_ColumnPropNameInTable="ColorNameColumn" msprop:Generator_UserColumnName="ColorName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

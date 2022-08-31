@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c00e35484a0649bc9b895ea49810eca4" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Car_Type" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.City" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Color" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Country" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Manufacturer" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Model" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Person" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Person_Type" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.State" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Transaction" Width="1.5" PointX="10.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Transaction_Type" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.Vehicle" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.CarsDetail" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.CustomersDetail" Width="1.5" PointX="2.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.SalesDetail" Width="1.5" PointX="10.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dblab_phase2_aftercreateModel.SuppliersDetail" Width="1.5" PointX="10.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Model__TypeID__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Vehicle__TypeID__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__City__StateID__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Person__CityID__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Vehicle__ColorID__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Manufactu__Count__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__State__CountryID__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Model__Manufactu__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Vehicle__Manufac__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Transacti__Perso__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Transacti__TypeC__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="dblab_phase2_aftercreateModel.FK__Transaction__VIN__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
