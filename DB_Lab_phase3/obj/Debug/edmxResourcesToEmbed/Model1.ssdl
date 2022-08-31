@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dblab_phase2_aftercreateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Car_Type">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StateID" Type="int" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ColorID" />
+    </Key>
+    <Property Name="ColorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HexCode" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ManufacturerID" />
+    </Key>
+    <Property Name="ManufacturerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryID" Type="int" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="ModelID" />
+    </Key>
+    <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ManufacturerID" Type="int" />
+    <Property Name="TypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="PersonID" />
+    </Key>
+    <Property Name="PersonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonTypeID" Type="int" Nullable="false" />
+    <Property Name="NationalCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="ModificationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Person_Type">
+    <Key>
+      <PropertyRef Name="PersonTypeID" />
+    </Key>
+    <Property Name="PersonTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryID" Type="int" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeCode" Type="int" />
+    <Property Name="PersonID" Type="int" />
+    <Property Name="VIN" Type="uniqueidentifier" />
+    <Property Name="Date" Type="varchar" MaxLength="50" />
+    <Property Name="Price" Type="int" />
+    <Property Name="Currency" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Transaction_Type">
+    <Key>
+      <PropertyRef Name="TypeCode" />
+    </Key>
+    <Property Name="TypeCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="VIN" />
+    </Key>
+    <Property Name="VIN" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ManufacturerID" Type="int" />
+    <Property Name="ModelID" Type="int" />
+    <Property Name="TypeID" Type="int" />
+    <Property Name="ColorID" Type="int" />
+    <Property Name="Milage" Type="int" />
+    <Property Name="Year" Type="date" />
+    <Property Name="Fuel" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dblab_phase2_aftercreate.dbo.CarsDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CarsDetail">
+    <Key>
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="ChassisType" />
+      <PropertyRef Name="CountryOfProduction" />
+      <PropertyRef Name="FuelType" />
+      <PropertyRef Name="ColorName" />
+    </Key>
+    <Property Name="Manufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChassisType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryOfProduction" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="YearOfProduction" Type="int" />
+    <Property Name="Milage" Type="int" />
+    <Property Name="FuelType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ColorName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dblab_phase2_aftercreate.dbo.CustomersDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CustomersDetail">
+    <Key>
+      <PropertyRef Name="CustomerFullName" />
+      <PropertyRef Name="NationalCode" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="Country" />
+    </Key>
+    <Property Name="CustomerFullName" Type="varchar" MaxLength="101" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="NationalCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dblab_phase2_aftercreate.dbo.SalesDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SalesDetail">
+    <Key>
+      <PropertyRef Name="CustomerFullName" />
+      <PropertyRef Name="NationalCode" />
+      <PropertyRef Name="PersonType" />
+      <PropertyRef Name="TransactionType" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="ChassisType" />
+      <PropertyRef Name="FuelType" />
+    </Key>
+    <Property Name="CustomerFullName" Type="varchar" MaxLength="101" Nullable="false" />
+    <Property Name="NationalCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PersonType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TransactionType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="VIN" Type="uniqueidentifier" />
+    <Property Name="Manufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChassisType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="YearOfProduction" Type="int" />
+    <Property Name="Milage" Type="int" />
+    <Property Name="FuelType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateOfTransaction" Type="varchar" MaxLength="50" />
+    <Property Name="Price" Type="int" />
+    <Property Name="Currency" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dblab_phase2_aftercreate.dbo.SuppliersDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SuppliersDetail">
+    <Key>
+      <PropertyRef Name="CustomerFullName" />
+      <PropertyRef Name="NationalCode" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="Country" />
+    </Key>
+    <Property Name="CustomerFullName" Type="varchar" MaxLength="101" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="NationalCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__City__StateID__31EC6D26">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Manufactu__Count__35BCFE0A">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Manufacturer">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Model__Manufactu__398D8EEE">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="0..1" />
+    <End Role="Model" Type="Self.Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Model__TypeID__3A81B327">
+    <End Role="Car_Type" Type="Self.Car_Type" Multiplicity="0..1" />
+    <End Role="Model" Type="Self.Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car_Type">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Person__CityID__46E78A0C">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__State__CountryID__2E1BDC42">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Perso__4E88ABD4">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonID" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__TypeC__4D94879B">
+    <End Role="Transaction_Type" Type="Self.Transaction_Type" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction_Type">
+        <PropertyRef Name="TypeCode" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="TypeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transaction__VIN__4F7CD00D">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="VIN" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="VIN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__ColorID__3F466844">
+    <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="ColorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__Manufac__403A8C7D">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__TypeID__3E52440B">
+    <End Role="Car_Type" Type="Self.Car_Type" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car_Type">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddNewPerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PersonTypeName" Type="nchar" Mode="In" />
+    <Parameter Name="NationalCode" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="nchar" Mode="In" />
+    <Parameter Name="LastName" Type="nchar" Mode="In" />
+    <Parameter Name="Gender" Type="nchar" Mode="In" />
+    <Parameter Name="CityName" Type="nchar" Mode="In" />
+    <Parameter Name="StateName" Type="nchar" Mode="In" />
+    <Parameter Name="CountryName" Type="nchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="ChangeCurrency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SourceCurrency" Type="nchar" Mode="In" />
+    <Parameter Name="DestinationCurrency" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="ColorNameToHexCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="ColorName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CountrySalesDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CountryName" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="CustomerFullName" Type="varchar" MaxLength="101" Nullable="false" />
+          <Property Name="NationalCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VIN" Type="uniqueidentifier" />
+          <Property Name="Manufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChassisType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="YearOfProduction" Type="int" />
+          <Property Name="Milage" Type="int" />
+          <Property Name="FuelType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfTransaction" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Currency" Type="varchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="CustomerBuyFromInv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PersonID" Type="int" Mode="In" />
+    <Parameter Name="VIN" Type="nchar" Mode="In" />
+    <Parameter Name="Price" Type="int" Mode="In" />
+    <Parameter Name="Currency" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="MadeCars" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="CountryName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="MilageFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MilageMin" Type="int" Mode="In" />
+    <Parameter Name="MilageMax" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Manufacturer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChassisType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryOfProduction" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="YearOfProduction" Type="int" />
+          <Property Name="Milage" Type="int" />
+          <Property Name="FuelType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ColorName" Type="varchar" MaxLength="50" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="dblab_phase2_aftercreateModelStoreContainer">
+    <EntitySet Name="Car_Type" EntityType="Self.Car_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person_Type" EntityType="Self.Person_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction_Type" EntityType="Self.Transaction_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CarsDetail" EntityType="Self.CarsDetail" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CarsDetail].[Manufacturer] AS [Manufacturer], 
+    [CarsDetail].[Model] AS [Model], 
+    [CarsDetail].[ChassisType] AS [ChassisType], 
+    [CarsDetail].[CountryOfProduction] AS [CountryOfProduction], 
+    [CarsDetail].[YearOfProduction] AS [YearOfProduction], 
+    [CarsDetail].[Milage] AS [Milage], 
+    [CarsDetail].[FuelType] AS [FuelType], 
+    [CarsDetail].[ColorName] AS [ColorName]
+    FROM [dbo].[CarsDetail] AS [CarsDetail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CustomersDetail" EntityType="Self.CustomersDetail" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CustomersDetail].[CustomerFullName] AS [CustomerFullName], 
+    [CustomersDetail].[Gender] AS [Gender], 
+    [CustomersDetail].[NationalCode] AS [NationalCode], 
+    [CustomersDetail].[EmailAddress] AS [EmailAddress], 
+    [CustomersDetail].[City] AS [City], 
+    [CustomersDetail].[State] AS [State], 
+    [CustomersDetail].[Country] AS [Country]
+    FROM [dbo].[CustomersDetail] AS [CustomersDetail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SalesDetail" EntityType="Self.SalesDetail" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SalesDetail].[CustomerFullName] AS [CustomerFullName], 
+    [SalesDetail].[NationalCode] AS [NationalCode], 
+    [SalesDetail].[PersonType] AS [PersonType], 
+    [SalesDetail].[TransactionType] AS [TransactionType], 
+    [SalesDetail].[VIN] AS [VIN], 
+    [SalesDetail].[Manufacturer] AS [Manufacturer], 
+    [SalesDetail].[Model] AS [Model], 
+    [SalesDetail].[ChassisType] AS [ChassisType], 
+    [SalesDetail].[YearOfProduction] AS [YearOfProduction], 
+    [SalesDetail].[Milage] AS [Milage], 
+    [SalesDetail].[FuelType] AS [FuelType], 
+    [SalesDetail].[DateOfTransaction] AS [DateOfTransaction], 
+    [SalesDetail].[Price] AS [Price], 
+    [SalesDetail].[Currency] AS [Currency]
+    FROM [dbo].[SalesDetail] AS [SalesDetail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SuppliersDetail" EntityType="Self.SuppliersDetail" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SuppliersDetail].[CustomerFullName] AS [CustomerFullName], 
+    [SuppliersDetail].[Gender] AS [Gender], 
+    [SuppliersDetail].[NationalCode] AS [NationalCode], 
+    [SuppliersDetail].[EmailAddress] AS [EmailAddress], 
+    [SuppliersDetail].[City] AS [City], 
+    [SuppliersDetail].[State] AS [State], 
+    [SuppliersDetail].[Country] AS [Country]
+    FROM [dbo].[SuppliersDetail] AS [SuppliersDetail]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__City__StateID__31EC6D26" Association="Self.FK__City__StateID__31EC6D26">
+      <End Role="State" EntitySet="State" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Manufactu__Count__35BCFE0A" Association="Self.FK__Manufactu__Count__35BCFE0A">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Model__Manufactu__398D8EEE" Association="Self.FK__Model__Manufactu__398D8EEE">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="Model" EntitySet="Model" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Model__TypeID__3A81B327" Association="Self.FK__Model__TypeID__3A81B327">
+      <End Role="Car_Type" EntitySet="Car_Type" />
+      <End Role="Model" EntitySet="Model" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Person__CityID__46E78A0C" Association="Self.FK__Person__CityID__46E78A0C">
+      <End Role="City" EntitySet="City" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK__State__CountryID__2E1BDC42" Association="Self.FK__State__CountryID__2E1BDC42">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Perso__4E88ABD4" Association="Self.FK__Transacti__Perso__4E88ABD4">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__TypeC__4D94879B" Association="Self.FK__Transacti__TypeC__4D94879B">
+      <End Role="Transaction_Type" EntitySet="Transaction_Type" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transaction__VIN__4F7CD00D" Association="Self.FK__Transaction__VIN__4F7CD00D">
+      <End Role="Vehicle" EntitySet="Vehicle" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__ColorID__3F466844" Association="Self.FK__Vehicle__ColorID__3F466844">
+      <End Role="Color" EntitySet="Color" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__Manufac__403A8C7D" Association="Self.FK__Vehicle__Manufac__403A8C7D">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__TypeID__3E52440B" Association="Self.FK__Vehicle__TypeID__3E52440B">
+      <End Role="Car_Type" EntitySet="Car_Type" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

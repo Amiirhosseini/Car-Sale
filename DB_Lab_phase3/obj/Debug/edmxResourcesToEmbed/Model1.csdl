@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dblab_phase2_aftercreateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="CountrySalesDetail_Result">
+    <Property Name="CustomerFullName" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NationalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VIN" Type="Guid" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ChassisType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YearOfProduction" Type="Int32" />
+    <Property Name="Milage" Type="Int32" />
+    <Property Name="FuelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateOfTransaction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <ComplexType Name="MilageFilter_Result">
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ChassisType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CountryOfProduction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YearOfProduction" Type="Int32" />
+    <Property Name="Milage" Type="Int32" />
+    <Property Name="FuelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Car_Type">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Models" Relationship="Self.FK__Model__TypeID__3A81B327" FromRole="Car_Type" ToRole="Model" />
+    <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__TypeID__3E52440B" FromRole="Car_Type" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StateID" Type="Int32" />
+    <NavigationProperty Name="State" Relationship="Self.FK__City__StateID__31EC6D26" FromRole="City" ToRole="State" />
+    <NavigationProperty Name="People" Relationship="Self.FK__Person__CityID__46E78A0C" FromRole="City" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ColorID" />
+    </Key>
+    <Property Name="ColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HexCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__ColorID__3F466844" FromRole="Color" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Manufacturers" Relationship="Self.FK__Manufactu__Count__35BCFE0A" FromRole="Country" ToRole="Manufacturer" />
+    <NavigationProperty Name="States" Relationship="Self.FK__State__CountryID__2E1BDC42" FromRole="Country" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ManufacturerID" />
+    </Key>
+    <Property Name="ManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" />
+    <NavigationProperty Name="Country" Relationship="Self.FK__Manufactu__Count__35BCFE0A" FromRole="Manufacturer" ToRole="Country" />
+    <NavigationProperty Name="Models" Relationship="Self.FK__Model__Manufactu__398D8EEE" FromRole="Manufacturer" ToRole="Model" />
+    <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__Manufac__403A8C7D" FromRole="Manufacturer" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="ModelID" />
+    </Key>
+    <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ManufacturerID" Type="Int32" />
+    <Property Name="TypeID" Type="Int32" />
+    <NavigationProperty Name="Car_Type" Relationship="Self.FK__Model__TypeID__3A81B327" FromRole="Model" ToRole="Car_Type" />
+    <NavigationProperty Name="Manufacturer" Relationship="Self.FK__Model__Manufactu__398D8EEE" FromRole="Model" ToRole="Manufacturer" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="PersonID" />
+    </Key>
+    <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonTypeID" Type="Int32" Nullable="false" />
+    <Property Name="NationalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="City" Relationship="Self.FK__Person__CityID__46E78A0C" FromRole="Person" ToRole="City" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Perso__4E88ABD4" FromRole="Person" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Person_Type">
+    <Key>
+      <PropertyRef Name="PersonTypeID" />
+    </Key>
+    <Property Name="PersonTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" />
+    <NavigationProperty Name="Cities" Relationship="Self.FK__City__StateID__31EC6D26" FromRole="State" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="Self.FK__State__CountryID__2E1BDC42" FromRole="State" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeCode" Type="Int32" />
+    <Property Name="PersonID" Type="Int32" />
+    <Property Name="VIN" Type="Guid" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Transacti__Perso__4E88ABD4" FromRole="Transaction" ToRole="Person" />
+    <NavigationProperty Name="Transaction_Type" Relationship="Self.FK__Transacti__TypeC__4D94879B" FromRole="Transaction" ToRole="Transaction_Type" />
+    <NavigationProperty Name="Vehicle" Relationship="Self.FK__Transaction__VIN__4F7CD00D" FromRole="Transaction" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Transaction_Type">
+    <Key>
+      <PropertyRef Name="TypeCode" />
+    </Key>
+    <Property Name="TypeCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__TypeC__4D94879B" FromRole="Transaction_Type" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="VIN" />
+    </Key>
+    <Property Name="VIN" Type="Guid" Nullable="false" />
+    <Property Name="ManufacturerID" Type="Int32" />
+    <Property Name="ModelID" Type="Int32" />
+    <Property Name="TypeID" Type="Int32" />
+    <Property Name="ColorID" Type="Int32" />
+    <Property Name="Milage" Type="Int32" />
+    <Property Name="Year" Type="DateTime" Precision="0" />
+    <Property Name="Fuel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Car_Type" Relationship="Self.FK__Vehicle__TypeID__3E52440B" FromRole="Vehicle" ToRole="Car_Type" />
+    <NavigationProperty Name="Color" Relationship="Self.FK__Vehicle__ColorID__3F466844" FromRole="Vehicle" ToRole="Color" />
+    <NavigationProperty Name="Manufacturer" Relationship="Self.FK__Vehicle__Manufac__403A8C7D" FromRole="Vehicle" ToRole="Manufacturer" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transaction__VIN__4F7CD00D" FromRole="Vehicle" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="CarsDetail">
+    <Key>
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="ChassisType" />
+      <PropertyRef Name="CountryOfProduction" />
+      <PropertyRef Name="FuelType" />
+      <PropertyRef Name="ColorName" />
+    </Key>
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ChassisType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CountryOfProduction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YearOfProduction" Type="Int32" />
+    <Property Name="Milage" Type="Int32" />
+    <Property Name="FuelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomersDetail">
+    <Key>
+      <PropertyRef Name="CustomerFullName" />
+      <PropertyRef Name="NationalCode" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="Country" />
+    </Key>
+    <Property Name="CustomerFullName" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NationalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesDetail">
+    <Key>
+      <PropertyRef Name="CustomerFullName" />
+      <PropertyRef Name="NationalCode" />
+      <PropertyRef Name="PersonType" />
+      <PropertyRef Name="TransactionType" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="ChassisType" />
+      <PropertyRef Name="FuelType" />
+    </Key>
+    <Property Name="CustomerFullName" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NationalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PersonType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VIN" Type="Guid" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ChassisType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YearOfProduction" Type="Int32" />
+    <Property Name="Milage" Type="Int32" />
+    <Property Name="FuelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateOfTransaction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SuppliersDetail">
+    <Key>
+      <PropertyRef Name="CustomerFullName" />
+      <PropertyRef Name="NationalCode" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="Country" />
+    </Key>
+    <Property Name="CustomerFullName" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NationalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Model__TypeID__3A81B327">
+    <End Role="Car_Type" Type="Self.Car_Type" Multiplicity="0..1" />
+    <End Role="Model" Type="Self.Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car_Type">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__TypeID__3E52440B">
+    <End Role="Car_Type" Type="Self.Car_Type" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car_Type">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__City__StateID__31EC6D26">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Person__CityID__46E78A0C">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__ColorID__3F466844">
+    <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="ColorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Manufactu__Count__35BCFE0A">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Manufacturer">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__State__CountryID__2E1BDC42">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Model__Manufactu__398D8EEE">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="0..1" />
+    <End Role="Model" Type="Self.Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__Manufac__403A8C7D">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Perso__4E88ABD4">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonID" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__TypeC__4D94879B">
+    <End Role="Transaction_Type" Type="Self.Transaction_Type" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction_Type">
+        <PropertyRef Name="TypeCode" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="TypeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transaction__VIN__4F7CD00D">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="VIN" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="VIN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dblab_phase2_aftercreateEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Car_Type" EntityType="Self.Car_Type" />
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="Colors" EntityType="Self.Color" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
+    <EntitySet Name="Models" EntityType="Self.Model" />
+    <EntitySet Name="People" EntityType="Self.Person" />
+    <EntitySet Name="Person_Type" EntityType="Self.Person_Type" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <EntitySet Name="Transaction_Type" EntityType="Self.Transaction_Type" />
+    <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+    <EntitySet Name="CarsDetails" EntityType="Self.CarsDetail" />
+    <EntitySet Name="CustomersDetails" EntityType="Self.CustomersDetail" />
+    <EntitySet Name="SalesDetails" EntityType="Self.SalesDetail" />
+    <EntitySet Name="SuppliersDetails" EntityType="Self.SuppliersDetail" />
+    <AssociationSet Name="FK__Model__TypeID__3A81B327" Association="Self.FK__Model__TypeID__3A81B327">
+      <End Role="Car_Type" EntitySet="Car_Type" />
+      <End Role="Model" EntitySet="Models" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__TypeID__3E52440B" Association="Self.FK__Vehicle__TypeID__3E52440B">
+      <End Role="Car_Type" EntitySet="Car_Type" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__City__StateID__31EC6D26" Association="Self.FK__City__StateID__31EC6D26">
+      <End Role="State" EntitySet="States" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Person__CityID__46E78A0C" Association="Self.FK__Person__CityID__46E78A0C">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__ColorID__3F466844" Association="Self.FK__Vehicle__ColorID__3F466844">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Manufactu__Count__35BCFE0A" Association="Self.FK__Manufactu__Count__35BCFE0A">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Manufacturer" EntitySet="Manufacturers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__State__CountryID__2E1BDC42" Association="Self.FK__State__CountryID__2E1BDC42">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="State" EntitySet="States" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Model__Manufactu__398D8EEE" Association="Self.FK__Model__Manufactu__398D8EEE">
+      <End Role="Manufacturer" EntitySet="Manufacturers" />
+      <End Role="Model" EntitySet="Models" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__Manufac__403A8C7D" Association="Self.FK__Vehicle__Manufac__403A8C7D">
+      <End Role="Manufacturer" EntitySet="Manufacturers" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Perso__4E88ABD4" Association="Self.FK__Transacti__Perso__4E88ABD4">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__TypeC__4D94879B" Association="Self.FK__Transacti__TypeC__4D94879B">
+      <End Role="Transaction_Type" EntitySet="Transaction_Type" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transaction__VIN__4F7CD00D" Association="Self.FK__Transaction__VIN__4F7CD00D">
+      <End Role="Vehicle" EntitySet="Vehicles" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <FunctionImport Name="CountrySalesDetail" IsComposable="true" ReturnType="Collection(dblab_phase2_aftercreateModel.CountrySalesDetail_Result)">
+      <Parameter Name="CountryName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MilageFilter" IsComposable="true" ReturnType="Collection(dblab_phase2_aftercreateModel.MilageFilter_Result)">
+      <Parameter Name="MilageMin" Mode="In" Type="Int32" />
+      <Parameter Name="MilageMax" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddNewPerson">
+      <Parameter Name="PersonTypeName" Mode="In" Type="String" />
+      <Parameter Name="NationalCode" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="CityName" Mode="In" Type="String" />
+      <Parameter Name="StateName" Mode="In" Type="String" />
+      <Parameter Name="CountryName" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ChangeCurrency">
+      <Parameter Name="SourceCurrency" Mode="In" Type="String" />
+      <Parameter Name="DestinationCurrency" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CustomerBuyFromInv">
+      <Parameter Name="PersonID" Mode="In" Type="Int32" />
+      <Parameter Name="VIN" Mode="In" Type="String" />
+      <Parameter Name="Price" Mode="In" Type="Int32" />
+      <Parameter Name="Currency" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
